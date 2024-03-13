@@ -1,0 +1,235 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: oms-h2-db
+  name: oms-h2-db
+  namespace: oms-modernized
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oms-h2-db
+  template:
+    metadata:
+      labels:
+        app: oms-h2-db
+    spec:
+      containers:
+      - image: oscarfonts/h2
+        name: oms-h2
+        env:
+        - name: H2_OPTIONS
+          value: "-ifNotExists"
+        ports:
+        - containerPort: 81
+        - containerPort: 1521
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: oms-h2-db
+  name: oms-h2-admin
+  namespace: oms-modernized
+spec:
+  selector:
+    app: oms-h2-db
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 81
+    targetPort: 81
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: oms-h2-db
+  name: oms-h2-data
+  namespace: oms-modernized
+spec:
+  selector:
+    app: oms-h2-db
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 1521
+    targetPort: 1521
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: oms-inventory
+  name: oms-inventory-app-config
+  namespace: oms-modernized
+data:
+  SPRING_DATASOURCE_URL: "jdbc:h2:tcp://oms-h2-data:1521/test"
+  SPRING_DATASOURCE_DRIVER-CLASS-NAME: "org.h2.Driver"
+  SPRING_DATASOURCE_USERNAME: "sa"
+  SPRING_DATASOURCE_PASSWORD: "password"
+  SPRING_JPA_HIBERNATE_DDL-AUTO: "update"
+  SERVER_PORT: "8080"
+  SPRING_PROFILES_ACTIVE: "local"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: oms-inventory
+  name: oms-inventory
+  namespace: oms-modernized
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oms-inventory 
+  template:
+    metadata:
+      labels:
+        app: oms-inventory 
+    spec:
+      hostname: oms-inventory
+      containers:
+      - image: cloud-native-labs:5000/refactoring-oms-inventory-controller:1.0
+        name: oms-inventory 
+        envFrom:
+        - configMapRef:
+            name: oms-inventory-app-config
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: oms-inventory 
+  name: oms-inventory
+  namespace: oms-modernized
+spec:
+  selector:
+    app: oms-inventory 
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30081
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: oms-product
+  name: oms-product-app-config
+  namespace: oms-modernized
+data:
+  SPRING_DATASOURCE_URL: "jdbc:h2:tcp://oms-h2-data:1521/test"
+  SPRING_DATASOURCE_DRIVER-CLASS-NAME: "org.h2.Driver"
+  SPRING_DATASOURCE_USERNAME: "sa"
+  SPRING_DATASOURCE_PASSWORD: "password"
+  SPRING_JPA_HIBERNATE_DDL-AUTO: "update"
+  SERVER_PORT: "8080"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: oms-product
+  name: oms-product
+  namespace: oms-modernized
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oms-product 
+  template:
+    metadata:
+      labels:
+        app: oms-product 
+    spec:
+      containers:
+      - image: cloud-native-labs:5000/refactoring-oms-product-controller:1.0
+        name: oms-product 
+        envFrom:
+        - configMapRef:
+            name: oms-product-app-config
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: oms-product 
+  name: oms-product
+  namespace: oms-modernized
+spec:
+  selector:
+    app: oms-product 
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30082
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: oms-order
+  name: oms-order-app-config
+  namespace: oms-modernized
+data:
+  SPRING_DATASOURCE_URL: "jdbc:h2:tcp://oms-h2-data:1521/test"
+  SPRING_DATASOURCE_DRIVER-CLASS-NAME: "org.h2.Driver"
+  SPRING_DATASOURCE_USERNAME: "sa"
+  SPRING_DATASOURCE_PASSWORD: "password"
+  SPRING_JPA_HIBERNATE_DDL-AUTO: "update"
+  SERVER_PORT: "8080"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: oms-order
+  name: oms-order
+  namespace: oms-modernized
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oms-order 
+  template:
+    metadata:
+      labels:
+        app: oms-order 
+    spec:
+      containers:
+      - image: cloud-native-labs:5000/refactoring-oms-order-controller:1.0
+        name: oms-order 
+        envFrom:
+        - configMapRef:
+            name: oms-order-app-config
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: oms-order 
+  name: oms-order
+  namespace: oms-modernized
+spec:
+  selector:
+    app: oms-order 
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30083

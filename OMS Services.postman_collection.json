@@ -1,0 +1,497 @@
+{
+	"info": {
+		"_postman_id": "fcbe9e84-37e2-4f5d-a09c-388edae20041",
+		"name": "OMS Services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Create Multiple Inventory Items",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"skuId\":\"SM-S20-BLK\",\n        \"storeId\": \"11\",\n        \"quantity\": 20\n    },\n    {\n        \"skuId\":\"SM-S20-WHT\",\n        \"storeId\": \"11\",\n        \"quantity\": 25\n    },\n    {\n        \"skuId\": \"IPHN-12-64-MINI-BLK\",\n        \"storeId\": \"11\",\n        \"quantity\": 13\n    },\n    {\n        \"skuId\": \"IPHN-12-64-MINI-WHT\",\n        \"storeId\": \"11\",\n        \"quantity\": 23\n    },\n    {\n        \"skuId\": \"IPHN-12-64-MINI-GRN\",\n        \"storeId\": \"11\",\n        \"quantity\": 12\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/inventory/multi-create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"inventory",
+								"multi-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Inventory",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"skuId\": \"A165\",\n  \"storeId\": \"10\",\n  \"quantity\": 20\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Inventory Item",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/inventory/SM-S20-BLK",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"inventory",
+								"SM-S20-BLK"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Inventory Item Generated EP",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"skuId\" : \"IPHN-12-64-MINI-WHT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/inventoryService/fetchInventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"inventoryService",
+								"fetchInventory"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Products",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"productId\":\"SM-S20-BLK\",\n        \"name\":\"S20 Black\",\n        \"description\":\"Samsung S20 Black\",\n        \"manuf\":\"Samsung\"\n    },\n    {\n        \"productId\":\"SM-S20-WHT\",\n        \"name\":\"S20 White\",\n        \"description\":\"Samsung S20 White\",\n        \"manuf\":\"Samsung\"\n    },\n    {\n        \"productId\": \"IPHN-12-64-MINI-BLK\",\n        \"name\" : \"IPhone 12 Mini 1\",\n        \"description\" : \"IPhone 12 Mini 64GB Black\",\n        \"manuf\" : \"Apple\"\n    },\n    {\n        \"productId\": \"IPHN-12-64-MINI-WHT\",\n        \"name\" : \"IPhone 12 Mini 2\",\n        \"description\" : \"IPhone 12 Mini 64GB White\",\n        \"manuf\" : \"Apple\"\n    },\n    {\n        \"productId\": \"IPHN-12-64-MINI-GRN\",\n        \"name\" : \"IPhone 12 Mini 3\",\n        \"description\" : \"IPhone 12 Mini 64GB Green\",\n        \"manuf\" : \"Apple\"\n    }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/product/register-list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"product",
+								"register-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Product By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/product/IPHN-12-64-MINI-WHT",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"product",
+								"IPHN-12-64-MINI-WHT"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Product Inventory By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/product/inv/IPHN-12-64-MINI-WHT",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"product",
+								"inv",
+								"IPHN-12-64-MINI-WHT"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Inventory By Product Description",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/product/inv-desc/iphone",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"product",
+								"inv-desc",
+								"iphone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All Products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/product/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"product",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Order Lines By Product ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/product/orderlines/SM-S20-BLK",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"product",
+								"orderlines",
+								"SM-S20-BLK"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Charges For Product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/product/charges/SM-S20-BLK",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"product",
+								"charges",
+								"SM-S20-BLK"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Create Order",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerOrderId\": \"1\",\n    \"primaryPhone\": \"9525944805\",\n    \"customerEmailId\": \"as@yahoo.com\",\n    \"orderStatus\": \"SUBMITTED\",\n    \"firstName\": \"Anand\",\n    \"orderDate\": null,\n    \"profileId\": null,\n    \"lastName\": null,\n    \"entryType\": null,\n    \"billToAddress\": {\n        \"billToAddressId\": \"101\",\n        \"firstName\": \"Anand\",\n        \"lastName\": \"sudhakar\",\n        \"address1\": null,\n        \"address2\": null,\n        \"city\": \"BLOOMINGTON\",\n        \"state\": \"MN\",\n        \"zipCode\": \"55344\"\n    },\n    \"shipToAddress\": {\n        \"shipToAddressId\": \"102\",\n        \"firstName\": \"Anand\",\n        \"lastName\": \"sudhakar\",\n        \"address1\": null,\n        \"address2\": null,\n        \"city\": \"BLOOMINGTON\",\n        \"state\": \"MN\",\n        \"zipCode\": \"55344\"\n    },\n    \"orderLines\": [\n        {\n            \"lineItemId\": \"100\",\n            \"customerOrderId\": \"1\",\n            \"shipNode\": null,\n            \"shipNodeDescription\": null,\n            \"levelOfService\": null,\n            \"primeLineNumber\": \"1\",\n            \"subLineNumber\": \"1\",\n            \"customerSKU\": \"SM-S20-BLK\",\n            \"skuDescription\": null,\n            \"estimatedArrivalDate\": null,\n            \"status\": null,\n            \"reshippedBefore\": null,\n            \"shipToAddress\": {\n                \"shipToAddressId\": \"102\",\n                \"firstName\": \"Anand\",\n                \"lastName\": \"sudhakar\",\n                \"address1\": null,\n                \"address2\": null,\n                \"city\": \"BLOOMINGTON\",\n                \"state\": \"MN\",\n                \"zipCode\": \"55344\"\n            },\n            \"charges\": {\n                \"lineChargeId\": \"678\",\n                \"totalCharges\": 10.0\n            }\n        }\n    ],\n    \"paymentInfo\": {\n        \"paymentId\": \"234\",\n        \"paymentStatus\": \"SUCCESS\",\n        \"cardType\": \"VISA\",\n        \"authorizedAmount\": 43.0,\n        \"collectedAmount\": 5.0\n    },\n    \"charges\": {\n        \"chargesId\": \"678\",\n        \"lineSubTotal\": null,\n        \"totalCharges\": 10.0,\n        \"salesTax\": null,\n        \"grandTotal\": null\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Multiple Orders",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"customerOrderId\": \"1\",\n        \"primaryPhone\": \"9525944805\",\n        \"customerEmailId\": \"as@yahoo.com\",\n        \"orderStatus\": \"SUBMITTED\",\n        \"firstName\": \"Anand\",\n        \"orderDate\": null,\n        \"profileId\": null,\n        \"lastName\": null,\n        \"entryType\": null,\n        \"billToAddress\": {\n            \"billToAddressId\": \"101\",\n            \"firstName\": \"Anand\",\n            \"lastName\": \"sudhakar\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"BLOOMINGTON\",\n            \"state\": \"MN\",\n            \"zipCode\": \"55344\"\n        },\n        \"shipToAddress\": {\n            \"shipToAddressId\": \"102\",\n            \"firstName\": \"Anand\",\n            \"lastName\": \"sudhakar\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"BLOOMINGTON\",\n            \"state\": \"MN\",\n            \"zipCode\": \"55344\"\n        },\n        \"orderLines\": [\n            {\n                \"lineItemId\": \"100\",\n                \"customerOrderId\": \"1\",\n                \"shipNode\": null,\n                \"shipNodeDescription\": null,\n                \"levelOfService\": null,\n                \"primeLineNumber\": \"1\",\n                \"subLineNumber\": \"1\",\n                \"customerSKU\": \"SM-S20-BLK\",\n                \"skuDescription\": null,\n                \"estimatedArrivalDate\": null,\n                \"status\": null,\n                \"reshippedBefore\": null,\n                \"shipToAddress\": {\n                    \"shipToAddressId\": \"102\",\n                    \"firstName\": \"Anand\",\n                    \"lastName\": \"sudhakar\",\n                    \"address1\": null,\n                    \"address2\": null,\n                    \"city\": \"BLOOMINGTON\",\n                    \"state\": \"MN\",\n                    \"zipCode\": \"55344\"\n                },\n                \"charges\": {\n                    \"lineChargeId\": \"601\",\n                    \"totalCharges\": 10.0\n                }\n            }\n        ],\n        \"paymentInfo\": {\n            \"paymentId\": \"234\",\n            \"paymentStatus\": \"SUCCESS\",\n            \"cardType\": \"VISA\",\n            \"authorizedAmount\": 43.0,\n            \"collectedAmount\": 5.0\n        },\n        \"charges\": {\n            \"chargesId\": \"601\",\n            \"lineSubTotal\": null,\n            \"totalCharges\": 10.0,\n            \"salesTax\": null,\n            \"grandTotal\": null\n        }\n    },\n    {\n        \"customerOrderId\": \"2\",\n        \"primaryPhone\": \"9525944805\",\n        \"customerEmailId\": \"as@yahoo.com\",\n        \"orderStatus\": \"SUBMITTED\",\n        \"firstName\": \"Anand\",\n        \"orderDate\": null,\n        \"profileId\": null,\n        \"lastName\": null,\n        \"entryType\": null,\n        \"billToAddress\": {\n            \"billToAddressId\": \"101\",\n            \"firstName\": \"Anand\",\n            \"lastName\": \"sudhakar\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"BLOOMINGTON\",\n            \"state\": \"MN\",\n            \"zipCode\": \"55344\"\n        },\n        \"shipToAddress\": {\n            \"shipToAddressId\": \"102\",\n            \"firstName\": \"Anand\",\n            \"lastName\": \"sudhakar\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"BLOOMINGTON\",\n            \"state\": \"MN\",\n            \"zipCode\": \"55344\"\n        },\n        \"orderLines\": [\n            {\n                \"lineItemId\": \"200\",\n                \"customerOrderId\": \"2\",\n                \"shipNode\": null,\n                \"shipNodeDescription\": null,\n                \"levelOfService\": null,\n                \"primeLineNumber\": \"1\",\n                \"subLineNumber\": \"1\",\n                \"customerSKU\": \"SM-S20-WHT\",\n                \"skuDescription\": null,\n                \"estimatedArrivalDate\": null,\n                \"status\": null,\n                \"reshippedBefore\": null,\n                \"shipToAddress\": {\n                    \"shipToAddressId\": \"102\",\n                    \"firstName\": \"Anand\",\n                    \"lastName\": \"sudhakar\",\n                    \"address1\": null,\n                    \"address2\": null,\n                    \"city\": \"BLOOMINGTON\",\n                    \"state\": \"MN\",\n                    \"zipCode\": \"55344\"\n                },\n                \"charges\": {\n                    \"lineChargeId\": \"602\",\n                    \"totalCharges\": 11.0\n                }\n            }\n        ],\n        \"paymentInfo\": {\n            \"paymentId\": \"234\",\n            \"paymentStatus\": \"SUCCESS\",\n            \"cardType\": \"VISA\",\n            \"authorizedAmount\": 43.0,\n            \"collectedAmount\": 5.0\n        },\n        \"charges\": {\n            \"chargesId\": \"602\",\n            \"lineSubTotal\": null,\n            \"totalCharges\": 11.0,\n            \"salesTax\": null,\n            \"grandTotal\": null\n        }\n    },\n    {\n        \"customerOrderId\": \"3\",\n        \"primaryPhone\": \"9525944805\",\n        \"customerEmailId\": \"as@yahoo.com\",\n        \"orderStatus\": \"SUBMITTED\",\n        \"firstName\": \"Anand\",\n        \"orderDate\": null,\n        \"profileId\": null,\n        \"lastName\": null,\n        \"entryType\": null,\n        \"billToAddress\": {\n            \"billToAddressId\": \"101\",\n            \"firstName\": \"Anand\",\n            \"lastName\": \"sudhakar\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"BLOOMINGTON\",\n            \"state\": \"MN\",\n            \"zipCode\": \"55344\"\n        },\n        \"shipToAddress\": {\n            \"shipToAddressId\": \"102\",\n            \"firstName\": \"Anand\",\n            \"lastName\": \"sudhakar\",\n            \"address1\": null,\n            \"address2\": null,\n            \"city\": \"BLOOMINGTON\",\n            \"state\": \"MN\",\n            \"zipCode\": \"55344\"\n        },\n        \"orderLines\": [\n            {\n                \"lineItemId\": \"300\",\n                \"customerOrderId\": \"3\",\n                \"shipNode\": null,\n                \"shipNodeDescription\": null,\n                \"levelOfService\": null,\n                \"primeLineNumber\": \"1\",\n                \"subLineNumber\": \"1\",\n                \"customerSKU\": \"IPHN-12-64-MINI-BLK\",\n                \"skuDescription\": null,\n                \"estimatedArrivalDate\": null,\n                \"status\": null,\n                \"reshippedBefore\": null,\n                \"shipToAddress\": {\n                    \"shipToAddressId\": \"102\",\n                    \"firstName\": \"Anand\",\n                    \"lastName\": \"sudhakar\",\n                    \"address1\": null,\n                    \"address2\": null,\n                    \"city\": \"BLOOMINGTON\",\n                    \"state\": \"MN\",\n                    \"zipCode\": \"55344\"\n                },\n                \"charges\": {\n                    \"lineChargeId\": \"603\",\n                    \"totalCharges\": 12.0\n                }\n            }\n        ],\n        \"paymentInfo\": {\n            \"paymentId\": \"234\",\n            \"paymentStatus\": \"SUCCESS\",\n            \"cardType\": \"VISA\",\n            \"authorizedAmount\": 43.0,\n            \"collectedAmount\": 5.0\n        },\n        \"charges\": {\n            \"chargesId\": \"603\",\n            \"lineSubTotal\": null,\n            \"totalCharges\": 12.0,\n            \"salesTax\": null,\n            \"grandTotal\": null\n        }\n    }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/order/multi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"multi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/order/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,7 @@
+/home/ubuntu/Sandbox/vFunction/oms-services/product-controller/src/main/java/com/oms/productcontroller/ProductControllerApp.java
+/home/ubuntu/Sandbox/vFunction/oms-services/product-controller/src/main/java/com/oms/repository/ProductRepository.java
+/home/ubuntu/Sandbox/vFunction/oms-services/product-controller/src/main/java/com/oms/service/ProductService.java
+/home/ubuntu/Sandbox/vFunction/oms-services/product-controller/src/main/java/com/oms/inventorycontroller/dto/InventoryServiceFetchInventoryOutDTO.java
+/home/ubuntu/Sandbox/vFunction/oms-services/product-controller/src/main/java/com/oms/repository/OrderLineRepository.java
+/home/ubuntu/Sandbox/vFunction/oms-services/product-controller/src/main/java/com/oms/inventorycontroller/dto/InventoryServiceFetchInventoryInDTO.java
+/home/ubuntu/Sandbox/vFunction/oms-services/product-controller/src/main/java/com/oms/controller/ProductController.java

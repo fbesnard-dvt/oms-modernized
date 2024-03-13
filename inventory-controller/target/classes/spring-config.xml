@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:gfe="http://www.springframework.org/schema/gemfire" xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans         http://www.springframework.org/schema/beans/spring-beans-3.1.xsd         http://www.springframework.org/schema/context         http://www.springframework.org/schema/context/spring-context-3.1.xsd   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd   http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd    http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd         http://www.springframework.org/schema/gemfire http://www.springframework.org/schema/gemfire/spring-gemfire.xsd">
+
+
+	<!-- CONTEXT -->
+	<context:component-scan base-package="com.oms"/>
+
+	<jpa:repositories base-package="com.oms.repository" entity-manager-factory-ref="entityManagerFactory"/>
+
+	<bean class="com.oms.util.Logger" id="logger">
+		<property name="path" value="oms-log.txt"/>
+	</bean>
+
+	<beans profile="replicated">
+		<gfe:cache/>
+		<gfe:replicated-region id="inventoryRegion" name="Inventory">
+			<gfe:cache-loader>
+				<bean class="com.oms.gemfire.GemfireCacheLoader">
+					<property name="repository" ref="inventoryRepository"/>
+				</bean>
+			</gfe:cache-loader>
+			<gfe:cache-writer>
+				<bean class="com.oms.gemfire.GemfireCacheWriter">
+					<property name="repository" ref="inventoryRepository"/>
+				</bean>
+			</gfe:cache-writer>
+		</gfe:replicated-region>
+	</beans>
+	<beans profile="local">
+		<gfe:cache/>
+		<gfe:local-region id="inventoryRegion" name="Inventory">
+			<gfe:cache-loader>
+				<bean class="com.oms.gemfire.GemfireCacheLoader">
+					<property name="repository" ref="inventoryRepository"/>
+				</bean>
+			</gfe:cache-loader>
+			<gfe:cache-writer>
+				<bean class="com.oms.gemfire.GemfireCacheWriter">
+					<property name="repository" ref="inventoryRepository"/>
+				</bean>
+			</gfe:cache-writer>
+		</gfe:local-region>
+	</beans>
+	<beans profile="client">
+		<bean class="org.springframework.data.gemfire.mapping.MappingPdxSerializer" id="pdxSerializer"/>
+		<gfe:client-cache pdx-serializer-ref="pdxSerializer"/>
+
+		<gfe:pool>
+			<gfe:locator host="127.0.0.1" port="10334"/>
+		</gfe:pool>
+
+		<gfe:client-region id="inventoryRegion" name="Inventory" shortcut="PROXY">
+			<gfe:cache-loader>
+				<bean class="com.oms.gemfire.GemfireCacheLoader">
+					<property name="repository" ref="inventoryRepository"/>
+				</bean>
+			</gfe:cache-loader>
+			<gfe:cache-writer>
+				<bean class="com.oms.gemfire.GemfireCacheWriter">
+					<property name="repository" ref="inventoryRepository"/>
+				</bean>
+			</gfe:cache-writer>
+		</gfe:client-region>
+	</beans>
+</beans>
