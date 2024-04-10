@@ -29,4 +29,10 @@ public class Logger {
             throw new RuntimeException(e);
         }
     }
+
+    public void error(String message, Exception e) {
+        // Log the error message and the exception.
+        System.err.println(message);
+        e.printStackTrace();
+    }
 }

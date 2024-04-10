@@ -1,9 +1,0 @@
-/home/franck/Sandbox/oms-tutorial/oms-services/inventory-controller/src/main/java/com/oms/inventorycontroller/InventoryControllerApp.java
-/home/franck/Sandbox/oms-tutorial/oms-services/inventory-controller/src/main/java/com/oms/service/InventoryService.java
-/home/franck/Sandbox/oms-tutorial/oms-services/inventory-controller/src/main/java/com/oms/inventorycontroller/dto/InventoryServiceFetchInventoryOutDTO.java
-/home/franck/Sandbox/oms-tutorial/oms-services/inventory-controller/src/main/java/com/oms/gemfire/GemfireCacheLoader.java
-/home/franck/Sandbox/oms-tutorial/oms-services/inventory-controller/src/main/java/com/oms/inventorycontroller/InventoryServiceController.java
-/home/franck/Sandbox/oms-tutorial/oms-services/inventory-controller/src/main/java/com/oms/repository/InventoryRepository.java
-/home/franck/Sandbox/oms-tutorial/oms-services/inventory-controller/src/main/java/com/oms/inventorycontroller/dto/InventoryServiceFetchInventoryInDTO.java
-/home/franck/Sandbox/oms-tutorial/oms-services/inventory-controller/src/main/java/com/oms/controller/InventoryController.java
-/home/franck/Sandbox/oms-tutorial/oms-services/inventory-controller/src/main/java/com/oms/gemfire/GemfireCacheWriter.java

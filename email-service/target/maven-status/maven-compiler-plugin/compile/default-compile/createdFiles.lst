@@ -1,0 +1,8 @@
+com/oms/emailservice/EmailServiceController.class
+com/oms/integrations/EmailHttpClient.class
+com/oms/dto/EmailRequestDto.class
+com/oms/service/EmailService.class
+com/oms/emailservice/EmailServiceApp.class
+com/oms/integrations/EmailHttpClientImpl.class
+com/oms/emailservice/dto/EmailServiceSendEmailOutDTO.class
+com/oms/emailservice/dto/EmailServiceSendEmailInDTO.class

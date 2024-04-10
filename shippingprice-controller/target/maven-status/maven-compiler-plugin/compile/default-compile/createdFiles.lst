@@ -1,0 +1,7 @@
+com/oms/repository/ShippingRepository.class
+com/oms/service/ShippingService.class
+com/oms/shippingpricecontroller/ShippingServiceController.class
+com/oms/shippingpricecontroller/dto/ShippingServiceFetchShippingChargesInDTO.class
+com/oms/controller/ShippingPriceController.class
+com/oms/shippingpricecontroller/ShippingPriceControllerApp.class
+com/oms/shippingpricecontroller/dto/ShippingServiceFetchShippingChargesOutDTO.class

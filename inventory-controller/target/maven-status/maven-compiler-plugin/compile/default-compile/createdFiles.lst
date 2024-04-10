@@ -1,9 +1,0 @@
-com/oms/inventorycontroller/InventoryServiceController.class
-com/oms/inventorycontroller/dto/InventoryServiceFetchInventoryOutDTO.class
-com/oms/gemfire/GemfireCacheLoader.class
-com/oms/controller/InventoryController.class
-com/oms/repository/InventoryRepository.class
-com/oms/gemfire/GemfireCacheWriter.class
-com/oms/inventorycontroller/InventoryControllerApp.class
-com/oms/inventorycontroller/dto/InventoryServiceFetchInventoryInDTO.class
-com/oms/service/InventoryService.class

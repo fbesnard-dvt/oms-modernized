@@ -1,0 +1,54 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'maven-publish'
+    // The spotless plugin is used to remove unnecessary imports
+    // If it emits an error then you may need to create gradlew (gradle wrapper)
+    // And then apply to auto fix by running ./gradlew :spotlessApply
+    id 'com.diffplug.spotless' version '6.12.0'
+}
+
+group = 'com.oms'
+version = '1.0-SNAPSHOT'
+description = 'PaymentService'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jetty'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    compileOnly 'org.projectlombok:lombok'
+    testImplementation 'junit:junit'
+    testImplementation 'org.mockito:mockito-core'
+    implementation 'com.oms:common:1.0-SNAPSHOT'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+bootJar {
+    duplicatesStrategy = 'warn'
+}
+
+spotless {
+    java {
+        removeUnusedImports()
+    }
+}

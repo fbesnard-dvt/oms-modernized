@@ -37,7 +37,7 @@ public class ProductService {
 	@Autowired
 	Logger logger;
 
-	WebClient inventoryServiceClient = WebClient.create("http://localhost:8081");
+	WebClient inventoryServiceClient = WebClient.create("http://oms-inventory:8080");
 
 	public Product registerProduct(Product product) {
 		logger.log(this.getClass().getName());

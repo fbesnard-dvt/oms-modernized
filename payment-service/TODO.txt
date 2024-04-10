@@ -1,0 +1,11 @@
+TODO post code-copy
+===================
+This file contains a list of to-do items to be reviewed and addressed based on code-copy execution.
+
+General Steps
+=============
+- Make sure you are using the correct Java JDK version
+- Build and install the common library first
+- Use the spotless plugin to remove unnecessary imports (mvn spotless:apply or gradle spotlessApply depending on your build system)
+- Check to see if constant declarations are missing (static final fields that may have been optimized out by the compiler)
+- Check to see if auto-refactored classes (aka partial classes) are missing implementations and create the necessaery stubs
