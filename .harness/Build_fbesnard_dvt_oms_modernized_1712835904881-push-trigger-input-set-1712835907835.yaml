@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_fbesnard_dvt_oms_modernized_1712835904881-push-trigger-input-set
+  identifier: Build_fbesnard_dvt_oms_modernized_1712835904881pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_fbesnard_dvt_oms_modernized_1712835904881
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
