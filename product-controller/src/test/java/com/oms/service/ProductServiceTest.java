@@ -1,13 +1,13 @@
 package com.oms.service;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,7 +15,7 @@ import com.oms.entity.Product;
 import com.oms.repository.ProductRepository;
 import com.oms.util.Logger;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ProductServiceTest {
 
 	@Mock
@@ -23,7 +23,7 @@ public class ProductServiceTest {
 
 	ProductService productService = new ProductService();
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		productService.productRepository = productRepository;
 		productService.setLogger(new Logger());
@@ -46,6 +46,5 @@ public class ProductServiceTest {
 		}
 
 		assertNotNull(productService.registerProduct(p1));
-
 	}
 }

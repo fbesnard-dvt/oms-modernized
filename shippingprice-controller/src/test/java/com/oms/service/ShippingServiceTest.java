@@ -2,18 +2,17 @@ package com.oms.service;
 
 import com.oms.entity.Shipping;
 import com.oms.repository.ShippingRepository;
-import com.oms.util.Logger;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ShippingServiceTest {
 
     @Mock
@@ -21,7 +20,7 @@ public class ShippingServiceTest {
 
     ShippingService shippingService = new ShippingService();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         shippingService.shippingRepository = shippingRepository;
         // shippingService.setLogger(new Logger());
@@ -35,7 +34,6 @@ public class ShippingServiceTest {
 
         Shipping response = shippingService.fetchShippingCharges("123");
 
-        Assert.assertNotNull(response);
-
+        Assertions.assertNotNull(response);
     }
 }

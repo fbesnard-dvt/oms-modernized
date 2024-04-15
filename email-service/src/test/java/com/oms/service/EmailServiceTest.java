@@ -4,38 +4,39 @@ import com.oms.dto.EmailRequestDto;
 import com.oms.integrations.EmailHttpClient;
 import com.oms.util.Logger;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class EmailServiceTest {
 
     @Mock
     EmailHttpClient emailServiceHttpClient;
+    
     EmailService emailService = new EmailService();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         emailService.emailServiceHttpClient = emailServiceHttpClient;
         emailService.setLogger(new Logger());
     }
 
     @Test
-    public void sendEmail() {
+    public void testSendEmail() {
         EmailRequestDto emailRequestDto = new EmailRequestDto("1234","test","test body" ,"test type");
 
         when(emailServiceHttpClient.sendEmail(emailRequestDto)).thenReturn("SUCCESS");
 
         String response = emailService.sendEmail(emailRequestDto);
 
-        Assert.assertNotNull(response);
-        Assert.assertEquals(response , "SUCCESS");
-
+        assertNotNull(response);
+        assertEquals("SUCCESS", response);
     }
 }

@@ -1,32 +1,28 @@
 package com.oms.service;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
 import com.oms.util.Logger;
 
-
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class StoreSearchServiceTest {
 
     StoreSearchService storeSearchService = new StoreSearchService();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         storeSearchService.setLogger(new Logger());
     }
 
     @Test
     public void testStoreSearch() {
-
         List<String> response = storeSearchService.fetchStoresByZipCode("55347");
-
-        Assert.assertNotNull(response);
-
+        Assertions.assertNotNull(response);
     }
 }

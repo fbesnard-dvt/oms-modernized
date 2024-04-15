@@ -6,15 +6,17 @@ import com.oms.entity.SalesOrder;
 import com.oms.repository.SalesOrderRepository;
 import com.oms.util.Logger;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+@ExtendWith(MockitoExtension.class)
 public class OrderServiceTest {
 
     @Mock
@@ -22,7 +24,7 @@ public class OrderServiceTest {
 
     OrderService orderService = new OrderService();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         orderService.orderRepository = orderRepository;
         orderService.setLogger(new Logger());
@@ -44,9 +46,9 @@ public class OrderServiceTest {
 
         SalesOrder order = orderService.fetchOrder("1234");
 
-        Assert.assertNotNull(order);
-        Assert.assertEquals(order.getCustomerOrderId(),"1234");
-        Assert.assertEquals(order.getOrderStatus() , "COMPLETED");
+        assertNotNull(order);
+        assertEquals("1234", order.getCustomerOrderId());
+        assertEquals("COMPLETED", order.getOrderStatus());
     }
 
     @Test
@@ -59,8 +61,8 @@ public class OrderServiceTest {
 
         SalesOrder order = orderService.saveOrder(salesOrder);
 
-        Assert.assertNotNull(order);
-        Assert.assertEquals(order.getCustomerOrderId(),"1234");
-        Assert.assertEquals(order.getOrderStatus() , "COMPLETED");
+        assertNotNull(order);
+        assertEquals("1234", order.getCustomerOrderId());
+        assertEquals("COMPLETED", order.getOrderStatus());
     }
 }

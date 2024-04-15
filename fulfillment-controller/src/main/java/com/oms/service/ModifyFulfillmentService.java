@@ -33,8 +33,8 @@ public class ModifyFulfillmentService {
     @Autowired
     SalesOrderRepository salesOrderRepository;
 
-    // @Autowired
-    // PaymentService paymentService;
+    //@Autowired
+    //PaymentService paymentService;
     WebClient paymentServiceClient = WebClient.create("http://oms-payment:8084");
 
     //@Autowired

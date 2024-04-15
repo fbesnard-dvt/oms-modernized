@@ -1,8 +1,8 @@
-/home/ubuntu/Sandbox/vFunction/oms-modernized/email-service/src/main/java/com/oms/dto/EmailRequestDto.java
-/home/ubuntu/Sandbox/vFunction/oms-modernized/email-service/src/main/java/com/oms/emailservice/EmailServiceController.java
-/home/ubuntu/Sandbox/vFunction/oms-modernized/email-service/src/main/java/com/oms/integrations/EmailHttpClient.java
-/home/ubuntu/Sandbox/vFunction/oms-modernized/email-service/src/main/java/com/oms/service/EmailService.java
-/home/ubuntu/Sandbox/vFunction/oms-modernized/email-service/src/main/java/com/oms/integrations/EmailHttpClientImpl.java
-/home/ubuntu/Sandbox/vFunction/oms-modernized/email-service/src/main/java/com/oms/emailservice/EmailServiceApp.java
-/home/ubuntu/Sandbox/vFunction/oms-modernized/email-service/src/main/java/com/oms/emailservice/dto/EmailServiceSendEmailInDTO.java
-/home/ubuntu/Sandbox/vFunction/oms-modernized/email-service/src/main/java/com/oms/emailservice/dto/EmailServiceSendEmailOutDTO.java
+c:\Users\franck.besnard\GitHub\oms-modernized\email-service\src\main\java\com\oms\emailservice\EmailServiceApp.java
+c:\Users\franck.besnard\GitHub\oms-modernized\email-service\src\main\java\com\oms\integrations\EmailHttpClientImpl.java
+c:\Users\franck.besnard\GitHub\oms-modernized\email-service\src\main\java\com\oms\emailservice\EmailServiceController.java
+c:\Users\franck.besnard\GitHub\oms-modernized\email-service\src\main\java\com\oms\emailservice\dto\EmailServiceSendEmailInDTO.java
+c:\Users\franck.besnard\GitHub\oms-modernized\email-service\src\main\java\com\oms\integrations\EmailHttpClient.java
+c:\Users\franck.besnard\GitHub\oms-modernized\email-service\src\main\java\com\oms\service\EmailService.java
+c:\Users\franck.besnard\GitHub\oms-modernized\email-service\src\main\java\com\oms\dto\EmailRequestDto.java
+c:\Users\franck.besnard\GitHub\oms-modernized\email-service\src\main\java\com\oms\emailservice\dto\EmailServiceSendEmailOutDTO.java

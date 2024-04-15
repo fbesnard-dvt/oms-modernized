@@ -1,3 +1,3 @@
-com/oms/storesearchcontroller/StoreSearchControllerApp.class
-com/oms/service/StoreSearchService.class
-com/oms/controller/StoreSearchController.class
+com\oms\storesearchcontroller\StoreSearchControllerApp.class
+com\oms\controller\StoreSearchController.class
+com\oms\service\StoreSearchService.class
